@@ -1,5 +1,7 @@
-// telemetry.proto
+syntax = "proto3";
+
 message Telemetry {
-  uint32 id = 1;
-  double temperature = 2;
+    string msg = 1;
+    int32 temp = 2;
 }
+
