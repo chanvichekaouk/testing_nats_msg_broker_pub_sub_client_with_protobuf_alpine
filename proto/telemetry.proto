@@ -1,0 +1,5 @@
+// telemetry.proto
+message Telemetry {
+  uint32 id = 1;
+  double temperature = 2;
+}

@@ -1,0 +1,53 @@
+# Compiled objects
+*.o
+*.lo
+*.la
+*.obj
+*.elf
+
+# Compiled dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled static libraries
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Build directories
+/build/
+/dist/
+/bin/
+/target/
+/CMakeFiles/
+
+# CMake
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# IDEs / Editors
+.vscode/
+.idea/
+*.iml
+
+# Python virtual envs
+venv/
+.env/
