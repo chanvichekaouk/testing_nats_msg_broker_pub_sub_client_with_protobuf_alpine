@@ -16,3 +16,5 @@ e.g:
 ./test_runners "[multi_sub_receive_msg]" -c "Multiple subscribers receive the same published message
 
 <img width="1627" height="280" alt="image" src="https://github.com/user-attachments/assets/c8a92b9a-ab36-4d50-ac79-bea7cbe9e8d4" />
+<img width="850" height="237" alt="image" src="https://github.com/user-attachments/assets/3c5a2bfd-9abb-4711-b475-e1176debd62e" />
+
