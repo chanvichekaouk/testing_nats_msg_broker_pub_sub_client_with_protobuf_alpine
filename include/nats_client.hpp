@@ -1,5 +1,5 @@
 // nats_client.hpp
-#program once
+#pragma once
 #include <string>
 #include <functional>
 
@@ -8,7 +8,7 @@ class NatsClient {
 public:
 	using callback = std::function<void(const std::string&)>; // this is just like func<> delegate in c#
 
-	virtual ~NatClient() = default;
+	virtual ~NatsClient() = default;
 	virtual bool connect(const std::string& url) = 0;
 	virtual void disconnect() = 0;
 	virtual bool isConnected() const = 0;
