@@ -1,4 +1,4 @@
-This is a mock unit test btwn Publisher client, message-broker (nats_server), and Subscriber client using Catch2 v3 Unit Test framework with Alpine official 
+This is a mock unit test btwn Publisher client, message-broker (nats_server), and Subscriber client with protobuf cross-platform data format using Catch2 v3 Unit Test framework with Alpine official 
 Hub Image.
 
 I like to compile it directly at the terminal with g++ compiler
