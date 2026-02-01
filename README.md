@@ -104,4 +104,17 @@ You must explicitly link the micro‑libraries required by your generated Protob
 
 Example:
 
+```
+g++ -Iinclude -Iproto \
+proto/*.cc tests/*.cpp \
+-o test_runners \
+-lprotobuf -lprotobuf-lite \
+-labsl_base -labsl_strings \
+-labsl_raw_logging_internal \
+-labsl_log_internal_check_op \
+-labsl_log_internal_message \
+-labsl_log_internal_nullguard \
+-lCatch2Main -lCatch2
+```
+
 <img width="967" height="552" alt="image" src="https://github.com/user-attachments/assets/917bdf50-2d81-44e9-80dd-7bb3d1f205ac" />
