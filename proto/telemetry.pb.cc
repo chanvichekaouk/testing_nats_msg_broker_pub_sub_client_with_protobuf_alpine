@@ -27,9 +27,7 @@ namespace _fl = ::google::protobuf::internal::field_layout;
 
 inline constexpr Telemetry::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
-      : msg_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
+      : id_{0},
         temp_{0},
         _cached_size_{0} {}
 
@@ -67,7 +65,7 @@ const ::uint32_t
         ~0u,  // no _inlined_string_donated_
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
-        PROTOBUF_FIELD_OFFSET(::Telemetry, _impl_.msg_),
+        PROTOBUF_FIELD_OFFSET(::Telemetry, _impl_.id_),
         PROTOBUF_FIELD_OFFSET(::Telemetry, _impl_.temp_),
 };
 
@@ -80,14 +78,14 @@ static const ::_pb::Message* const file_default_instances[] = {
 };
 const char descriptor_table_protodef_telemetry_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
-    "\n\017telemetry.proto\"&\n\tTelemetry\022\013\n\003msg\030\001 "
-    "\001(\t\022\014\n\004temp\030\002 \001(\005b\006proto3"
+    "\n\017telemetry.proto\"%\n\tTelemetry\022\n\n\002id\030\001 \001"
+    "(\005\022\014\n\004temp\030\002 \001(\005b\006proto3"
 };
 static ::absl::once_flag descriptor_table_telemetry_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_telemetry_2eproto = {
     false,
     false,
-    65,
+    64,
     descriptor_table_protodef_telemetry_2eproto,
     "telemetry.proto",
     &descriptor_table_telemetry_2eproto_once,
@@ -115,38 +113,24 @@ Telemetry::Telemetry(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:Telemetry)
 }
-inline PROTOBUF_NDEBUG_INLINE Telemetry::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from, const ::Telemetry& from_msg)
-      : msg_(arena, from.msg_),
-        _cached_size_{0} {}
-
 Telemetry::Telemetry(
-    ::google::protobuf::Arena* arena,
-    const Telemetry& from)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, _class_data_.base()) {
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(arena) {
-#endif  // PROTOBUF_CUSTOM_VTABLE
-  Telemetry* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
-  _impl_.temp_ = from._impl_.temp_;
-
-  // @@protoc_insertion_point(copy_constructor:Telemetry)
+    ::google::protobuf::Arena* arena, const Telemetry& from)
+    : Telemetry(arena) {
+  MergeFrom(from);
 }
 inline PROTOBUF_NDEBUG_INLINE Telemetry::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
-      : msg_(arena),
-        _cached_size_{0} {}
+      : _cached_size_{0} {}
 
 inline void Telemetry::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.temp_ = {};
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, id_),
+           0,
+           offsetof(Impl_, temp_) -
+               offsetof(Impl_, id_) +
+               sizeof(Impl_::temp_));
 }
 Telemetry::~Telemetry() {
   // @@protoc_insertion_point(destructor:Telemetry)
@@ -156,7 +140,6 @@ inline void Telemetry::SharedDtor(MessageLite& self) {
   Telemetry& this_ = static_cast<Telemetry&>(self);
   this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   ABSL_DCHECK(this_.GetArena() == nullptr);
-  this_._impl_.msg_.Destroy();
   this_._impl_.~Impl_();
 }
 
@@ -165,7 +148,7 @@ inline void* Telemetry::PlacementNew_(const void*, void* mem,
   return ::new (mem) Telemetry(arena);
 }
 constexpr auto Telemetry::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(Telemetry),
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(Telemetry),
                                             alignof(Telemetry));
 }
 PROTOBUF_CONSTINIT
@@ -196,7 +179,7 @@ const ::google::protobuf::internal::ClassData* Telemetry::GetClassData() const {
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 0, 21, 2> Telemetry::_table_ = {
+const ::_pbi::TcParseTable<1, 2, 0, 0, 2> Telemetry::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
@@ -217,24 +200,21 @@ const ::_pbi::TcParseTable<1, 2, 0, 21, 2> Telemetry::_table_ = {
     // int32 temp = 2;
     {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(Telemetry, _impl_.temp_), 63>(),
      {16, 63, 0, PROTOBUF_FIELD_OFFSET(Telemetry, _impl_.temp_)}},
-    // string msg = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(Telemetry, _impl_.msg_)}},
+    // int32 id = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(Telemetry, _impl_.id_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(Telemetry, _impl_.id_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // string msg = 1;
-    {PROTOBUF_FIELD_OFFSET(Telemetry, _impl_.msg_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // int32 id = 1;
+    {PROTOBUF_FIELD_OFFSET(Telemetry, _impl_.id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
     // int32 temp = 2;
     {PROTOBUF_FIELD_OFFSET(Telemetry, _impl_.temp_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
   }},
   // no aux_entries
   {{
-    "\11\3\0\0\0\0\0\0"
-    "Telemetry"
-    "msg"
   }},
 };
 
@@ -245,8 +225,9 @@ PROTOBUF_NOINLINE void Telemetry::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.msg_.ClearToEmpty();
-  _impl_.temp_ = 0;
+  ::memset(&_impl_.id_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.temp_) -
+      reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.temp_));
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -265,12 +246,11 @@ PROTOBUF_NOINLINE void Telemetry::Clear() {
           ::uint32_t cached_has_bits = 0;
           (void)cached_has_bits;
 
-          // string msg = 1;
-          if (!this_._internal_msg().empty()) {
-            const std::string& _s = this_._internal_msg();
-            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "Telemetry.msg");
-            target = stream->WriteStringMaybeAliased(1, _s, target);
+          // int32 id = 1;
+          if (this_._internal_id() != 0) {
+            target = ::google::protobuf::internal::WireFormatLite::
+                WriteInt32ToArrayWithField<1>(
+                    stream, this_._internal_id(), target);
           }
 
           // int32 temp = 2;
@@ -305,10 +285,10 @@ PROTOBUF_NOINLINE void Telemetry::Clear() {
 
           ::_pbi::Prefetch5LinesFrom7Lines(&this_);
            {
-            // string msg = 1;
-            if (!this_._internal_msg().empty()) {
-              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                              this_._internal_msg());
+            // int32 id = 1;
+            if (this_._internal_id() != 0) {
+              total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+                  this_._internal_id());
             }
             // int32 temp = 2;
             if (this_._internal_temp() != 0) {
@@ -328,8 +308,8 @@ void Telemetry::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::googl
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_msg().empty()) {
-    _this->_internal_set_msg(from._internal_msg());
+  if (from._internal_id() != 0) {
+    _this->_impl_.id_ = from._impl_.id_;
   }
   if (from._internal_temp() != 0) {
     _this->_impl_.temp_ = from._impl_.temp_;
@@ -347,11 +327,13 @@ void Telemetry::CopyFrom(const Telemetry& from) {
 
 void Telemetry::InternalSwap(Telemetry* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* arena = GetArena();
-  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.msg_, &other->_impl_.msg_, arena);
-        swap(_impl_.temp_, other->_impl_.temp_);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(Telemetry, _impl_.temp_)
+      + sizeof(Telemetry::_impl_.temp_)
+      - PROTOBUF_FIELD_OFFSET(Telemetry, _impl_.id_)>(
+          reinterpret_cast<char*>(&_impl_.id_),
+          reinterpret_cast<char*>(&other->_impl_.id_));
 }
 
 ::google::protobuf::Metadata Telemetry::GetMetadata() const {

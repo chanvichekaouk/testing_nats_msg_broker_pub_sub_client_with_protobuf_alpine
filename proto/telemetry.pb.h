@@ -211,23 +211,17 @@ class Telemetry final : public ::google::protobuf::Message
 
   // accessors -------------------------------------------------------
   enum : int {
-    kMsgFieldNumber = 1,
+    kIdFieldNumber = 1,
     kTempFieldNumber = 2,
   };
-  // string msg = 1;
-  void clear_msg() ;
-  const std::string& msg() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_msg(Arg_&& arg, Args_... args);
-  std::string* mutable_msg();
-  PROTOBUF_NODISCARD std::string* release_msg();
-  void set_allocated_msg(std::string* value);
+  // int32 id = 1;
+  void clear_id() ;
+  ::int32_t id() const;
+  void set_id(::int32_t value);
 
   private:
-  const std::string& _internal_msg() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_msg(
-      const std::string& value);
-  std::string* _internal_mutable_msg();
+  ::int32_t _internal_id() const;
+  void _internal_set_id(::int32_t value);
 
   public:
   // int32 temp = 2;
@@ -246,7 +240,7 @@ class Telemetry final : public ::google::protobuf::Message
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
       1, 2, 0,
-      21, 2>
+      0, 2>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -263,7 +257,7 @@ class Telemetry final : public ::google::protobuf::Message
     inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
                           ::google::protobuf::Arena* arena, const Impl_& from,
                           const Telemetry& from_msg);
-    ::google::protobuf::internal::ArenaStringPtr msg_;
+    ::int32_t id_;
     ::int32_t temp_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
@@ -288,52 +282,26 @@ class Telemetry final : public ::google::protobuf::Message
 
 // Telemetry
 
-// string msg = 1;
-inline void Telemetry::clear_msg() {
+// int32 id = 1;
+inline void Telemetry::clear_id() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.msg_.ClearToEmpty();
+  _impl_.id_ = 0;
 }
-inline const std::string& Telemetry::msg() const
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:Telemetry.msg)
-  return _internal_msg();
+inline ::int32_t Telemetry::id() const {
+  // @@protoc_insertion_point(field_get:Telemetry.id)
+  return _internal_id();
 }
-template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void Telemetry::set_msg(Arg_&& arg,
-                                                     Args_... args) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.msg_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:Telemetry.msg)
+inline void Telemetry::set_id(::int32_t value) {
+  _internal_set_id(value);
+  // @@protoc_insertion_point(field_set:Telemetry.id)
 }
-inline std::string* Telemetry::mutable_msg() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  std::string* _s = _internal_mutable_msg();
-  // @@protoc_insertion_point(field_mutable:Telemetry.msg)
-  return _s;
-}
-inline const std::string& Telemetry::_internal_msg() const {
+inline ::int32_t Telemetry::_internal_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.msg_.Get();
+  return _impl_.id_;
 }
-inline void Telemetry::_internal_set_msg(const std::string& value) {
+inline void Telemetry::_internal_set_id(::int32_t value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.msg_.Set(value, GetArena());
-}
-inline std::string* Telemetry::_internal_mutable_msg() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  return _impl_.msg_.Mutable( GetArena());
-}
-inline std::string* Telemetry::release_msg() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:Telemetry.msg)
-  return _impl_.msg_.Release();
-}
-inline void Telemetry::set_allocated_msg(std::string* value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.msg_.SetAllocated(value, GetArena());
-  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.msg_.IsDefault()) {
-    _impl_.msg_.Set("", GetArena());
-  }
-  // @@protoc_insertion_point(field_set_allocated:Telemetry.msg)
+  _impl_.id_ = value;
 }
 
 // int32 temp = 2;

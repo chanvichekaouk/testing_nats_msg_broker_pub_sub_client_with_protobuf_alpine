@@ -1,3 +1,4 @@
+#pragma once
 #include "nats_client.hpp"
 #include <vector>
 #include <string>
